@@ -1,0 +1,21 @@
+[Unit]
+Description=Ente Auth codes for the Plasma panel (holds unlocked codes in memory)
+Documentation=https://github.com/YakupEmreYerli/ente-auth-plasmoid
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+ExecStart=%h/.local/bin/ente-codes daemon
+Restart=on-failure
+# Unlocked codes live only in this process: keep them out of core dumps.
+LimitCORE=0
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=read-only
+# The vault is re-sealed after each sync; logos are cached; the Ente CLI keeps its state in ~/.ente.
+ReadWritePaths=%t %h/.local/share/ente-auth-plasmoid %h/.cache/ente-auth-plasmoid -%h/.ente
+PrivateTmp=yes
+UMask=0077
+
+[Install]
+WantedBy=graphical-session.target

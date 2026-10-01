@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  core:
+    name: Rust core
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Toolchain
+        run: rustup component add clippy rustfmt
+      - name: Format
+        run: cargo fmt --manifest-path core/Cargo.toml --check
+      - name: Lint
+        run: cargo clippy --manifest-path core/Cargo.toml --locked --all-targets -- -D warnings
+      - name: Test
+        run: cargo test --manifest-path core/Cargo.toml --locked
+      - name: Build
+        run: cargo build --manifest-path core/Cargo.toml --locked
+      - name: CLI smoke test
+        env:
+          ENTE_CODES_HOME: /tmp/ente-codes-ci
+        run: |
+          bin=core/target/debug/ente-codes
+          $bin --version
+          $bin --json status | grep -q '"state":"empty"'
+          # No terminal and no widget here: reading anything must be refused.
+          set +e; $bin --json list; code=$?; set -e
+          test "$code" = 5
+
+  widget:
+    name: Plasma widget
+    runs-on: ubuntu-latest
+    container: archlinux:latest
+    steps:
+      # git first, so checkout makes a real repository the diff check can use.
+      - name: Install tools
+        run: pacman -Syu --noconfirm --needed git kpackage libplasma gettext shellcheck python
+      - uses: actions/checkout@v7
+      - name: Trust the workspace
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+      - name: Shell scripts
+        run: shellcheck install.sh tools/*.sh
+      - name: Metadata
+        run: python -m json.tool plasma/metadata.json > /dev/null
+      - name: Translations compile
+        run: tools/build-translations.sh
+      - name: Translations are up to date with the QML
+        run: |
+          tools/update-translations.sh
+          # POT dates change on every run; compare only the message ids.
+          git diff --quiet -I '^"POT-Creation-Date' -- po/ || { git diff -- po/; exit 1; }
+      - name: Package installs
+        run: |
+          export HOME=$(mktemp -d)
+          kpackagetool6 --type Plasma/Applet --install plasma
+          kpackagetool6 --type Plasma/Applet --show com.github.yakupemreyerli.enteauth
+      - name: Files named in the README exist
+        run: |
+          for f in docs/banner.png docs/screenshots/empty.png docs/screenshots/locked.png install.sh SECURITY.md CONTRIBUTING.md LICENSE README.tr.md data/ente-auth-plasmoid.service; do
+            test -e "$f" || { echo "missing: $f"; exit 1; }
+          done

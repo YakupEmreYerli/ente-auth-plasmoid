@@ -1,0 +1,24 @@
+{
+    "KPackageStructure": "Plasma/Applet",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "yakupemreyerli0@gmail.com",
+                "Name": "Yakup Emre Yerli",
+                "Name[tr]": "Yakup Emre Yerli"
+            }
+        ],
+        "Category": "Utilities",
+        "Description": "Your Ente Auth two-factor codes in the panel: search, click to copy, kept in sync with Ente",
+        "Description[tr]": "Ente Auth iki aşamalı doğrulama kodlarınız panelde: arayın, tıklayıp kopyalayın, Ente ile hep eşit",
+        "Icon": "password-copy",
+        "Id": "com.github.yakupemreyerli.enteauth",
+        "License": "GPL-2.0-or-later",
+        "Name": "Ente Auth Codes",
+        "Name[tr]": "Ente Auth Kodları",
+        "Version": "0.1.0",
+        "Website": "https://github.com/YakupEmreYerli/ente-auth-plasmoid"
+    },
+    "X-Plasma-API-Minimum-Version": "6.0",
+    "KPackageStructure-Version": 1
+}

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Unlock Ente Auth codes
+Name[tr]=Ente Auth kodlarının kilidini aç
+Comment=Asks for the passphrase once at login
+Comment[tr]=Oturum açılışında parolayı bir kez sorar
+Exec=sh -c 'sleep 5; exec "$HOME/.local/bin/ente-codes" unlock --gui'
+Icon=object-unlocked
+NoDisplay=true
+X-KDE-autostart-phase=2

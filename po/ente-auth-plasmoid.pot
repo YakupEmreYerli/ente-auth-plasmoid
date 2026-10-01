@@ -1,0 +1,198 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the ente-auth-plasmoid package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ente-auth-plasmoid\n"
+"Report-Msgid-Bugs-To: https://github.com/YakupEmreYerli/ente-auth-plasmoid/"
+"issues\n"
+"POT-Creation-Date: 2026-09-29 19:06+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: plasma/contents/config/config.qml:6
+msgid "General"
+msgstr ""
+
+#: plasma/contents/ui/FullRepresentation.qml:116
+msgid "Search…"
+msgstr ""
+
+#: plasma/contents/ui/FullRepresentation.qml:128 plasma/contents/ui/main.qml:21
+msgid "Ente Auth Codes"
+msgstr ""
+
+#: plasma/contents/ui/FullRepresentation.qml:139
+msgid "Syncing with Ente…"
+msgstr ""
+
+#: plasma/contents/ui/FullRepresentation.qml:140
+msgid "Sync failed: %1"
+msgstr ""
+
+#: plasma/contents/ui/FullRepresentation.qml:141
+#: plasma/contents/ui/FullRepresentation.qml:148
+msgid "Sync with Ente now"
+msgstr ""
+
+#: plasma/contents/ui/FullRepresentation.qml:143
+msgid "Synced with Ente just now"
+msgstr ""
+
+#: plasma/contents/ui/FullRepresentation.qml:144
+msgid "Synced with Ente %1 minute ago"
+msgid_plural "Synced with Ente %1 minutes ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#: plasma/contents/ui/FullRepresentation.qml:161
+#: plasma/contents/ui/FullRepresentation.qml:164
+msgid "Lock now"
+msgstr ""
+
+#: plasma/contents/ui/FullRepresentation.qml:222
+msgid "ente-codes is not installed"
+msgstr ""
+
+#: plasma/contents/ui/FullRepresentation.qml:223
+msgid "Access refused"
+msgstr ""
+
+#: plasma/contents/ui/FullRepresentation.qml:224
+msgid "Something went wrong"
+msgstr ""
+
+#: plasma/contents/ui/FullRepresentation.qml:229
+msgid ""
+"Install it with install.sh (see the README), or set its path in the widget "
+"settings."
+msgstr ""
+
+#: plasma/contents/ui/FullRepresentation.qml:235
+msgid "Try again"
+msgstr ""
+
+#: plasma/contents/ui/FullRepresentation.qml:245
+msgid "No matches"
+msgstr ""
+
+#: plasma/contents/ui/FullRepresentation.qml:306
+msgid "Copied"
+msgstr ""
+
+#: plasma/contents/ui/SetupGuide.qml:43
+msgid "Bring in your Ente Auth codes"
+msgstr ""
+
+#: plasma/contents/ui/SetupGuide.qml:53
+msgid "Once they are here, click an account to copy its code."
+msgstr ""
+
+#: plasma/contents/ui/SetupGuide.qml:60
+msgid "Connect your Ente account"
+msgstr ""
+
+#: plasma/contents/ui/SetupGuide.qml:62
+msgid ""
+"A terminal opens: type your Ente e-mail, password and verification code, "
+"then choose a passphrase for this computer. New codes you add on your phone "
+"then appear here by themselves."
+msgstr ""
+
+#: plasma/contents/ui/SetupGuide.qml:63
+msgid ""
+"Needs the Ente CLI, which is not installed. On Arch Linux install the ente-"
+"cli-bin package; elsewhere get it from Ente's GitHub releases."
+msgstr ""
+
+#: plasma/contents/ui/SetupGuide.qml:64
+msgid "Connect…"
+msgstr ""
+
+#: plasma/contents/ui/SetupGuide.qml:64
+msgid "Get the Ente CLI"
+msgstr ""
+
+#: plasma/contents/ui/SetupGuide.qml:78
+msgid "Import an exported file"
+msgstr ""
+
+#: plasma/contents/ui/SetupGuide.qml:79
+msgid ""
+"In the Ente Auth app: Settings → Data → Export codes → Plain text. Then pick "
+"that file here; it is wiped after importing. New codes must be imported "
+"again."
+msgstr ""
+
+#: plasma/contents/ui/SetupGuide.qml:80
+msgid "Choose file…"
+msgstr ""
+
+#: plasma/contents/ui/SetupGuide.qml:132
+msgid "Recommended"
+msgstr ""
+
+#: plasma/contents/ui/UnlockView.qml:64
+msgid "Your codes are locked"
+msgstr ""
+
+#: plasma/contents/ui/UnlockView.qml:70
+msgid "Passphrase"
+msgstr ""
+
+#: plasma/contents/ui/UnlockView.qml:91
+msgid "Wrong passphrase"
+msgstr ""
+
+#: plasma/contents/ui/UnlockView.qml:97 plasma/contents/ui/main.qml:49
+msgid "Unlock"
+msgstr ""
+
+#: plasma/contents/ui/configGeneral.qml:19
+msgid "After copying:"
+msgstr ""
+
+#: plasma/contents/ui/configGeneral.qml:20
+msgid "Close the popup"
+msgstr ""
+
+#: plasma/contents/ui/configGeneral.qml:25
+msgid "Command:"
+msgstr ""
+
+#: plasma/contents/ui/configGeneral.qml:33
+msgid ""
+"How long a copied code stays on the clipboard and when the codes lock "
+"themselves are set with “ente-codes settings” in a terminal."
+msgstr ""
+
+#: plasma/contents/ui/main.qml:24
+msgid "Unlocked, %1 code"
+msgid_plural "Unlocked, %1 codes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: plasma/contents/ui/main.qml:25
+msgid "Locked"
+msgstr ""
+
+#: plasma/contents/ui/main.qml:26
+msgid "No codes imported yet"
+msgstr ""
+
+#: plasma/contents/ui/main.qml:27
+msgid "The ente-codes command was not found"
+msgstr ""
+
+#: plasma/contents/ui/main.qml:55
+msgid "Lock"
+msgstr ""

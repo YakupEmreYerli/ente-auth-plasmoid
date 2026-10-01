@@ -1,0 +1,204 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ente-auth-plasmoid\n"
+"Report-Msgid-Bugs-To: https://github.com/YakupEmreYerli/ente-auth-plasmoid/"
+"issues\n"
+"POT-Creation-Date: 2026-09-29 19:06+0300\n"
+"PO-Revision-Date: 2026-09-29 18:00+0300\n"
+"Last-Translator: Yakup Emre Yerli\n"
+"Language-Team: Turkish\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: plasma/contents/config/config.qml:6
+msgid "General"
+msgstr "Genel"
+
+#: plasma/contents/ui/FullRepresentation.qml:116
+msgid "Search…"
+msgstr "Ara…"
+
+#: plasma/contents/ui/FullRepresentation.qml:128 plasma/contents/ui/main.qml:21
+msgid "Ente Auth Codes"
+msgstr "Ente Auth Kodları"
+
+#: plasma/contents/ui/FullRepresentation.qml:139
+msgid "Syncing with Ente…"
+msgstr "Ente ile eşitleniyor…"
+
+#: plasma/contents/ui/FullRepresentation.qml:140
+msgid "Sync failed: %1"
+msgstr "Eşitleme başarısız: %1"
+
+#: plasma/contents/ui/FullRepresentation.qml:141
+#: plasma/contents/ui/FullRepresentation.qml:148
+msgid "Sync with Ente now"
+msgstr "Şimdi Ente ile eşitle"
+
+#: plasma/contents/ui/FullRepresentation.qml:143
+msgid "Synced with Ente just now"
+msgstr "Az önce Ente ile eşitlendi"
+
+#: plasma/contents/ui/FullRepresentation.qml:144
+msgid "Synced with Ente %1 minute ago"
+msgid_plural "Synced with Ente %1 minutes ago"
+msgstr[0] "%1 dakika önce Ente ile eşitlendi"
+msgstr[1] "%1 dakika önce Ente ile eşitlendi"
+
+#: plasma/contents/ui/FullRepresentation.qml:161
+#: plasma/contents/ui/FullRepresentation.qml:164
+msgid "Lock now"
+msgstr "Şimdi kilitle"
+
+#: plasma/contents/ui/FullRepresentation.qml:222
+msgid "ente-codes is not installed"
+msgstr "ente-codes kurulu değil"
+
+#: plasma/contents/ui/FullRepresentation.qml:223
+msgid "Access refused"
+msgstr "Erişim reddedildi"
+
+#: plasma/contents/ui/FullRepresentation.qml:224
+msgid "Something went wrong"
+msgstr "Bir şeyler ters gitti"
+
+#: plasma/contents/ui/FullRepresentation.qml:229
+msgid ""
+"Install it with install.sh (see the README), or set its path in the widget "
+"settings."
+msgstr ""
+"install.sh ile kurun (README'ye bakın) ya da yolunu bileşen ayarlarından "
+"girin."
+
+#: plasma/contents/ui/FullRepresentation.qml:235
+msgid "Try again"
+msgstr "Tekrar dene"
+
+#: plasma/contents/ui/FullRepresentation.qml:245
+msgid "No matches"
+msgstr "Eşleşme yok"
+
+#: plasma/contents/ui/FullRepresentation.qml:306
+msgid "Copied"
+msgstr "Kopyalandı"
+
+#: plasma/contents/ui/SetupGuide.qml:43
+msgid "Bring in your Ente Auth codes"
+msgstr "Ente Auth kodlarınızı getirin"
+
+#: plasma/contents/ui/SetupGuide.qml:53
+msgid "Once they are here, click an account to copy its code."
+msgstr "Geldikten sonra bir hesaba tıklayınca kodu kopyalanır."
+
+#: plasma/contents/ui/SetupGuide.qml:60
+msgid "Connect your Ente account"
+msgstr "Ente hesabınızla bağlanın"
+
+#: plasma/contents/ui/SetupGuide.qml:62
+msgid ""
+"A terminal opens: type your Ente e-mail, password and verification code, "
+"then choose a passphrase for this computer. New codes you add on your phone "
+"then appear here by themselves."
+msgstr ""
+"Bir terminal açılır: Ente e-postanızı, şifrenizi ve doğrulama kodunuzu "
+"yazın, sonra bu bilgisayar için bir parola seçin. Telefona eklediğiniz yeni "
+"kodlar burada kendiliğinden görünür."
+
+#: plasma/contents/ui/SetupGuide.qml:63
+msgid ""
+"Needs the Ente CLI, which is not installed. On Arch Linux install the ente-"
+"cli-bin package; elsewhere get it from Ente's GitHub releases."
+msgstr ""
+"Ente CLI gerekiyor ama kurulu değil. Arch Linux'ta ente-cli-bin paketini "
+"kurun; diğer sistemlerde Ente'nin GitHub sürümlerinden indirin."
+
+#: plasma/contents/ui/SetupGuide.qml:64
+msgid "Connect…"
+msgstr "Bağlan…"
+
+#: plasma/contents/ui/SetupGuide.qml:64
+msgid "Get the Ente CLI"
+msgstr "Ente CLI'yi edinin"
+
+#: plasma/contents/ui/SetupGuide.qml:78
+msgid "Import an exported file"
+msgstr "Dışa aktarılan dosyayı içe aktarın"
+
+#: plasma/contents/ui/SetupGuide.qml:79
+msgid ""
+"In the Ente Auth app: Settings → Data → Export codes → Plain text. Then pick "
+"that file here; it is wiped after importing. New codes must be imported "
+"again."
+msgstr ""
+"Ente Auth uygulamasında: Ayarlar → Veri → Kodları dışa aktar → Düz metin. "
+"Sonra o dosyayı burada seçin; içe aktarıldıktan sonra silinir. Yeni kodlar "
+"için tekrar içe aktarmanız gerekir."
+
+#: plasma/contents/ui/SetupGuide.qml:80
+msgid "Choose file…"
+msgstr "Dosya seç…"
+
+#: plasma/contents/ui/SetupGuide.qml:132
+msgid "Recommended"
+msgstr "Önerilen"
+
+#: plasma/contents/ui/UnlockView.qml:64
+msgid "Your codes are locked"
+msgstr "Kodlarınız kilitli"
+
+#: plasma/contents/ui/UnlockView.qml:70
+msgid "Passphrase"
+msgstr "Parola"
+
+#: plasma/contents/ui/UnlockView.qml:91
+msgid "Wrong passphrase"
+msgstr "Parola yanlış"
+
+#: plasma/contents/ui/UnlockView.qml:97 plasma/contents/ui/main.qml:49
+msgid "Unlock"
+msgstr "Kilidi aç"
+
+#: plasma/contents/ui/configGeneral.qml:19
+msgid "After copying:"
+msgstr "Kopyaladıktan sonra:"
+
+#: plasma/contents/ui/configGeneral.qml:20
+msgid "Close the popup"
+msgstr "Açılır pencereyi kapat"
+
+#: plasma/contents/ui/configGeneral.qml:25
+msgid "Command:"
+msgstr "Komut:"
+
+#: plasma/contents/ui/configGeneral.qml:33
+msgid ""
+"How long a copied code stays on the clipboard and when the codes lock "
+"themselves are set with “ente-codes settings” in a terminal."
+msgstr ""
+"Kopyalanan kodun panoda ne kadar kalacağı ve kodların ne zaman kendiliğinden "
+"kilitleneceği terminalde “ente-codes settings” ile ayarlanır."
+
+#: plasma/contents/ui/main.qml:24
+msgid "Unlocked, %1 code"
+msgid_plural "Unlocked, %1 codes"
+msgstr[0] "Açık, %1 kod"
+msgstr[1] "Açık, %1 kod"
+
+#: plasma/contents/ui/main.qml:25
+msgid "Locked"
+msgstr "Kilitli"
+
+#: plasma/contents/ui/main.qml:26
+msgid "No codes imported yet"
+msgstr "Henüz kod içe aktarılmadı"
+
+#: plasma/contents/ui/main.qml:27
+msgid "The ente-codes command was not found"
+msgstr "ente-codes komutu bulunamadı"
+
+#: plasma/contents/ui/main.qml:55
+msgid "Lock"
+msgstr "Kilitle"
