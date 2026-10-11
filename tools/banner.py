@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
-"""Compose docs/banner.png (1280x640, also the GitHub social preview) from an
-off-screen render of the popup (tools/preview.py).
+"""Compose docs/banner.<lang>.png (1280x640, the English one is also the GitHub
+social preview) from an off-screen render of the popup (tools/preview.py).
 
     tools/preview.py docs/screenshots --states unlocked --icons ICON_HOME
-    tools/banner.py
+    tools/preview.py docs/screenshots --states unlocked --icons ICON_HOME --lang tr --suffix .tr
+    tools/banner.py         # English: docs/banner.en.png
+    tools/banner.py tr      # Turkish: docs/banner.tr.png
 Needs Pillow and the Noto fonts.
 """
 
+import argparse
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
@@ -16,8 +19,29 @@ W, H = 1280, 640
 FONT_BOLD = "/usr/share/fonts/noto/NotoSans-Bold.ttf"
 FONT_REG = "/usr/share/fonts/noto/NotoSans-Regular.ttf"
 
+TEXT = {
+    "en": {
+        "title": "Ente Auth Codes",
+        "sub": "for KDE Plasma",
+        "body": ["Your two-factor codes in the panel.", "Search, click, paste.", "Synced with Ente, locked in memory."],
+    },
+    "tr": {
+        "title": "Ente Auth Kodları",
+        "sub": "KDE Plasma için",
+        "body": ["İki aşamalı doğrulama kodlarınız panelde.", "Arayın, tıklayın, yapıştırın.",
+                 "Ente ile eşzamanlı, bellekte kilitli."],
+    },
+}
+
 
 def main() -> None:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("lang", nargs="?", default="en", choices=TEXT)
+    ap.add_argument("--out", type=Path, default=ROOT / "docs", help="output directory")
+    args = ap.parse_args()
+    t = TEXT[args.lang]
+    suffix = "" if args.lang == "en" else f".{args.lang}"
+
     bg = Image.new("RGB", (W, H), "#0b0d14")
     glow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     g = ImageDraw.Draw(glow)
@@ -28,7 +52,7 @@ def main() -> None:
     bg.paste(glow, (0, 0), glow)
 
     # The render already carries Plasma's dialog frame and a transparent margin.
-    shot = Image.open(ROOT / "docs/screenshots/unlocked.png").convert("RGBA")
+    shot = Image.open(ROOT / f"docs/screenshots/unlocked{suffix}.png").convert("RGBA")
     shot = shot.crop(shot.getbbox())
     target_h = 580
     shot = shot.resize((round(shot.width * target_h / shot.height), target_h), Image.LANCZOS)
@@ -44,18 +68,15 @@ def main() -> None:
     bg.paste(shot, (x, y), shot)
 
     d = ImageDraw.Draw(bg)
-    d.text((88, 196), "Ente Auth Codes", font=ImageFont.truetype(FONT_BOLD, 64), fill="#f2f3fa")
-    d.text((92, 282), "for KDE Plasma", font=ImageFont.truetype(FONT_REG, 30), fill="#b89cff")
+    d.text((88, 196), t["title"], font=ImageFont.truetype(FONT_BOLD, 64), fill="#f2f3fa")
+    d.text((92, 282), t["sub"], font=ImageFont.truetype(FONT_REG, 30), fill="#b89cff")
     body = ImageFont.truetype(FONT_REG, 27)
-    lines = [
-        ("Your two-factor codes in the panel.", "#a9adc4"),
-        ("Search, click, paste.", "#a9adc4"),
-        ("Synced with Ente, locked in memory.", "#7d8199"),
-    ]
+    lines = zip(t["body"], ["#a9adc4", "#a9adc4", "#7d8199"])
     for i, (line, colour) in enumerate(lines):
         d.text((90, 364 + i * 40), line, font=body, fill=colour)
 
-    out = ROOT / "docs/banner.png"
+    args.out.mkdir(parents=True, exist_ok=True)
+    out = args.out / f"banner.{args.lang}.png"
     bg.save(out, optimize=True)
     print(out)
 

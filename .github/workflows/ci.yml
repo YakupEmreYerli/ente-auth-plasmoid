@@ -64,6 +64,6 @@ jobs:
           kpackagetool6 --type Plasma/Applet --show com.github.yakupemreyerli.enteauth
       - name: Files named in the README exist
         run: |
-          for f in docs/banner.png docs/screenshots/empty.png docs/screenshots/locked.png install.sh SECURITY.md CONTRIBUTING.md LICENSE README.tr.md data/ente-auth-plasmoid.service; do
+          for f in docs/banner.en.png docs/banner.tr.png docs/screenshots/empty.png docs/screenshots/locked.png install.sh SECURITY.md CONTRIBUTING.md LICENSE README.tr.md data/ente-auth-plasmoid.service; do
             test -e "$f" || { echo "missing: $f"; exit 1; }
           done

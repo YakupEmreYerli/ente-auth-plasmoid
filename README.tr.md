@@ -7,7 +7,7 @@ yazın, Enter'a basın; kod panonuzda.
 
 > English: [README.md](README.md)
 
-![Ente Auth Kodları: hesapların logoları, kodları ve geri sayımlarıyla aranabilir liste](docs/banner.png)
+![Ente Auth Kodları: hesapların logoları, kodları ve geri sayımlarıyla aranabilir liste](docs/banner.tr.png)
 
 - **Ara ve kopyala.** Yazdıkça süzülür, Enter ya da tıklama kodu kopyalar; yapıştırabilmeniz için pencere kapanır.
 - **Hep eşit.** Telefonda kod ekleyin, burada da görünür: kilit açıkken bileşen resmî Ente CLI ile her 10 dakikada

@@ -7,6 +7,7 @@ accounts and never steal focus on the desktop. Needs the system PySide6.
 
     tools/preview.py OUTDIR [--scale 2] [--states unlocked locked empty]
                             [--icons DIR]   (an ENTE_CODES_HOME whose icon cache is filled)
+                            [--lang tr]     (texts from po/tr.po instead of English)
 """
 
 import argparse
@@ -29,6 +30,38 @@ ENTRIES = [
     {"id": "7", "issuer": "Steam", "account": "jane_plays", "code": "K7RNB", "remaining": 21, "period": 30},
     {"id": "8", "issuer": "Corner Bakery", "account": "jane", "code": "551208", "remaining": 21, "period": 30},
 ]
+
+
+def load_po(path: Path) -> dict:
+    """msgid -> msgstr from a .po file. A plural entry maps its singular and
+    plural msgids to the first and last form; fuzzy entries are left out."""
+    import ast
+
+    table, entry, key, fuzzy = {}, {}, None, False
+
+    def flush():
+        if entry.get("msgid") and not fuzzy:
+            if entry.get("msgstr"):
+                table[entry["msgid"]] = entry["msgstr"]
+            forms = [entry[k] for k in sorted(k for k in entry if k.startswith("msgstr["))]
+            if forms:
+                table[entry["msgid"]] = forms[0]
+                table[entry.get("msgid_plural", "")] = forms[-1]
+
+    for line in path.read_text(encoding="utf-8").splitlines() + [""]:
+        line = line.strip()
+        if not line:
+            flush()
+            entry, key, fuzzy = {}, None, False
+        elif line.startswith("#"):
+            fuzzy = fuzzy or (line.startswith("#,") and "fuzzy" in line)
+        elif line.startswith('"'):
+            entry[key] += ast.literal_eval(line)
+        else:
+            key, value = line.split(" ", 1)
+            entry[key] = ast.literal_eval(value)
+    return table
+
 
 STATES = {
     "unlocked": {"vaultState": "unlocked", "entries": ENTRIES},
@@ -125,7 +158,9 @@ def main() -> int:
     ap.add_argument("--states", nargs="*", default=list(STATES))
     ap.add_argument("--suffix", default="")
     ap.add_argument("--icons", type=Path, help="ENTE_CODES_HOME with a downloaded icon cache")
+    ap.add_argument("--lang", default="en", help="en, or a language with a po/<lang>.po (tr)")
     args = ap.parse_args()
+    table = {} if args.lang == "en" else load_po(ROOT / "po" / f"{args.lang}.po")
 
     if args.icons:
         # Same lookup as the real widget: ask the core, against a filled icon cache.
@@ -151,7 +186,12 @@ def main() -> int:
     from PySide6.QtQuick import QQuickView
 
     class Ki18n(QObject):
-        """Stands in for KLocalizedContext: English text, %1..%n filled in."""
+        """Stands in for KLocalizedContext: English text, or its translation from
+        po/<lang>.po with --lang, %1..%n filled in."""
+
+        @staticmethod
+        def _tr(text):
+            return table.get(text) or text
 
         @staticmethod
         def _fill(text, *subs):
@@ -164,16 +204,16 @@ def main() -> int:
         @Slot(str, result=str)
         @Slot(str, "QVariant", result=str)
         def i18n(self, text, *subs):
-            return self._fill(text, *subs)
+            return self._fill(self._tr(text), *subs)
 
         @Slot(str, str, result=str)
         @Slot(str, str, "QVariant", result=str)
         def i18nd(self, _domain, text, *subs):
-            return self._fill(text, *subs)
+            return self._fill(self._tr(text), *subs)
 
         @Slot(str, str, "QVariant", result=str)
         def i18np(self, one, many, n):
-            return self._fill(one if int(n) == 1 else many, n)
+            return self._fill(self._tr(one) if int(n) == 1 else self._tr(many), n)
 
     app = QGuiApplication(sys.argv)
     args.outdir.mkdir(parents=True, exist_ok=True)

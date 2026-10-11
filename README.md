@@ -7,7 +7,7 @@ press Enter, and the code is on your clipboard.
 
 > Türkçe: [README.tr.md](README.tr.md)
 
-![Ente Auth Codes: the panel popup with a searchable list of accounts, their logos, codes and countdowns](docs/banner.png)
+![Ente Auth Codes: the panel popup with a searchable list of accounts, their logos, codes and countdowns](docs/banner.en.png)
 
 - **Search and copy.** Type to filter, Enter or a click copies the code; the popup closes so you can paste.
 - **Stays in sync.** Add a code on your phone and it shows up here: while unlocked, the widget fetches changes
